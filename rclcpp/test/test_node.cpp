@@ -107,8 +107,8 @@ TEST_F(TestNode, get_clock) {
 TEST_F(TestNode, now) {
   auto node = std::make_shared<rclcpp::Node>("my_node", "/ns");
   auto clock = node->get_clock();
-  auto now_builtin = node->now().nanoseconds();
-  auto now_external = clock->now().nanoseconds();
+  auto now_builtin = node->now().milliseconds();
+  auto now_external = clock->now().milliseconds();
   EXPECT_GE(now_external, now_builtin);
-  EXPECT_LT(now_external - now_builtin, 50000L);
+  EXPECT_LT(now_external - now_builtin, 5);
 }
