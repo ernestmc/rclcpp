@@ -155,7 +155,7 @@ GraphListener::run_loop()
     for (const auto node_ptr : node_graph_interfaces_) {
       // Only wait on graph changes if some user of the node is watching.
       if (node_ptr->count_graph_users() == 0) {
-        continue;
+        // continue;
       }
       // Add the graph guard condition for the node to the wait set.
       auto graph_gc = node_ptr->get_graph_guard_condition();
