@@ -171,7 +171,8 @@ GraphListener::run_loop()
     // Wait for: graph changes, interrupt, or shutdown/SIGINT
     ret = rcl_wait(&wait_set_, 1000);  // block for ever until a guard condition is triggered
     if (RCL_RET_TIMEOUT == ret) {
-      throw std::runtime_error("rcl_wait unexpectedly timed out");
+      // throw std::runtime_error("rcl_wait unexpectedly timed out");
+      continue;
     }
     if (RCL_RET_OK != ret) {
       throw_from_rcl_error(ret, "failed to wait on wait set");
